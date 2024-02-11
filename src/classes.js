@@ -1,5 +1,6 @@
 //For the Javascript classes creating content on the webpage.
 //Base Food Shell
+
 // let foodimg = document.createElement("img");
 //     foodimg.src = foodReq.data.products.find(
 //       (item) => item._id === foodBarCode
