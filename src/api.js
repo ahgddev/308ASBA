@@ -1,4 +1,4 @@
-// export { getFoodIMG, getFoodNutrition };
+// export { getFoodIMG, getFoodNutrition, addProduct };
 //For getting stuff from the OpenFoodFacts API
 
 async function getFoodIMG(barcode) {
@@ -52,10 +52,10 @@ async function getFoodNutrition(barcode) {
   }
 }
 
-async function addProduct(barcode) {
+function addProduct(barcode) {
   let foodBarCode = String(barcode);
   try {
-    let foodSubmit = await axios.post(
+    axios.post(
       "https://world.openfoodfacts.org/cgi/product_jqm2.pl",
       null,
       {
