@@ -26,6 +26,7 @@ async function getFoodIMG(food) {
 }
 
 async function getFoodNutrition(barcode){
+    //Try to get the food nutrion value from another api
     let foodBarCode = String(barcode);
     let recipe = await axios({
         url: foodBarCode,
