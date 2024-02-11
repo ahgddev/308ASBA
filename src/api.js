@@ -1,40 +1,53 @@
 //For getting stuff from the foodish-api
 async function getFoodIMG(barcode) {
-    let foodBarCode = String(barcode);
-//   if (foodName.match(/\d+/g)) {
-//     throw new Error("Invalid food name.");
-//   }
-
+  let foodBarCode = String(barcode);
+  if (foodBarCode.match(/\w\s+/g)) {
+    throw new Error("Invalid food barcode.");
+  }
 
   //Try to get the requested food image.
   try {
     let foodReq = await axios({
-        url: foodBarCode,
-        method: "get",
-        baseURL: "https://world.openfoodfacts.org/api/v2/search/"
+      url: foodBarCode,
+      method: "get",
+      baseURL: "https://world.openfoodfacts.org/api/v2/search/",
     });
-    let foodimg = document.createElement("img");
-    foodimg.src = foodReq.data.products.find(item => item._id === foodBarCode).image_nutrition_small_url;
-    document.body.append(foodimg);
+    return foodReq.data.products.find((item) => item._id === foodBarCode)
+      .image_nutrition_small_url;
   } catch (error) {
-    //Throw an error if the food can't be found.
+    //Throw an error if the food image URL can't be found.
     console.log(error + " Food not found.");
-    let foodimg = document.createElement("img");
-    foodimg.src = "images/404img.png";
-    document.body.append(foodimg);
+    return error
   }
 }
 
-async function getFoodNutrition(barcode){
-    //Try to get the food nutrion value from another
-    let foodBarCode = String(barcode);
-    let foodData = await axios({
+async function getFoodNutrition(barcode) {
+  //Try to get the food nutrition and other information from the API, return it.
+  let foodBarCode = String(barcode);
+  try {
+    let foodDataSearch = await axios({
         url: foodBarCode,
         method: "get",
-        baseURL: "https://world.openfoodfacts.org/api/v2/search/"
-      });  
-      console.log(foodData.data.products.find(item => item._id === foodBarCode))
+        baseURL: "https://world.openfoodfacts.org/api/v2/search/",
+      });
+      let foodData = foodDataSearch.data.products.find((item) => item._id === foodBarCode)
+      let foodInfoArr = {
+        name: foodData.abbreviated_product_name,
+        description: foodData.category_properties,
+        allergens: foodData.allergens,
+        categories: foodData.categories_hierarchy,
+        nutrition_levels: foodData.nutrient_levels,
+        company_name: foodData.customer_service,
+        ingredients_list: foodData.ingredients_text_en_ocr_1642445989
+      }
+      return foodInfoArr
+  } catch (error) {
+    //Throw an error if the food data can't be found.
+    console.log(error + " Food not found.");
+    return error
+  }
+ 
 }
 
 getFoodIMG("3017620422003");
-getFoodNutrition("3017620422003")
+getFoodNutrition("3017620422003");
