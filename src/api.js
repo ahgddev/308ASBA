@@ -1,21 +1,15 @@
 //For getting stuff from the foodish-api
-async function getFoodIMG(food, barcode) {
+async function getFoodIMG(food) {
   let foodName = String(food);
-  let foodBarCode = String(barcode);
   if (foodName.match(/\d+/g)) {
     throw new Error("Invalid food name.");
   }
 
-  let recipe = await axios({
-    url: foodBarCode,
-    method: "get",
-    baseURL: "https://world.openfoodfacts.org/api/v2/product/"
-  });
-  console.log(recipe)
+
   //Try to get the requested food image.
   try {
     let foodReq = await axios({
-      url: foodName,
+      url: "pizza",
       method: "get",
       baseURL: "https://foodish-api.com/api/images/",
     });
@@ -30,4 +24,16 @@ async function getFoodIMG(food, barcode) {
     document.body.append(foodimg);
   }
 }
-getFoodIMG("pizza",3017620422003);
+
+async function getFoodNutrition(barcode){
+    let foodBarCode = String(barcode);
+    let recipe = await axios({
+        url: foodBarCode,
+        method: "get",
+        baseURL: "https://world.openfoodfacts.org/api/v2/search/"
+      });  
+      console.log(recipe.data.products)
+}
+
+getFoodIMG("pizza");
+getFoodNutrition("30176204220A03")
