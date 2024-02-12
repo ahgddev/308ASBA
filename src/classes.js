@@ -1,5 +1,5 @@
 //For the Javascript classes creating content on the webpage.
-import { getFoodIMG, getFoodNutrition } from "/src/api.js";
+import { getFoodIMG, getFoodNutrition, addProduct } from "/src/api.js";
 export { createProducts, clearProducts, defaultProducts };
 
 //Base Food Shell

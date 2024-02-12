@@ -27,7 +27,6 @@ async function getFoodNutrition(barcode) {
   //Try to get the food nutrition and other information from the API, return it.
   let foodBarCode = barcode;
   try {
-    debugger
     let foodDataSearch = await axios({
       url: foodBarCode,
       method: "get",
@@ -54,28 +53,29 @@ async function getFoodNutrition(barcode) {
   }
 }
 
-function addProduct(barcode) {
-  let foodBarCode = String(barcode);
+function addProduct(arr) {
   try {
     axios.post(
       "https://world.openfoodfacts.org/cgi/product_jqm2.pl",
       null,
       {
         params: {
-            code: foodBarCode,
-            user_id:  'myusername',
-            comment: 'new packaging from super-app',
-            brands: 's,',
-            labels: 'r,',
-            categories: 's,',
-            packaging: 'Frozen'
+            code: arr[0],
+            user_id:  arr[1],
+            comment: arr[2],
+            brands: arr[3],
+            labels: arr[4],
+            categories: arr[5],
+            packaging: arr[6]
         },
       }
     ).then(
-    console.log("All good.")
+      alert("Form submitted sucessfully")
     )
   } catch (error) {
     console.log(error + " Couldn't submit food!");
     return error;
   }
 }
+
+

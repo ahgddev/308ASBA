@@ -1,7 +1,9 @@
 import {createProducts, clearProducts, defaultProducts } from "/src/classes.js";
+import {addProduct} from "/src/api.js";
 let searchBar = document.getElementById("search_bar");
 let submitBtn = document.getElementById("submit")
 let resetBtn = document.getElementById("reset_button")
+let foodForm = document.getElementById("productAddition")
 // Manage user changing things on the page
 
 
@@ -25,3 +27,10 @@ function searchForFood(barcode){
     clearProducts();
     createProducts(barcode);
 }
+
+//Handle the form submission
+foodForm.addEventListener("formdata", function(event){
+    event.preventDefault();
+    const data = event.formData;
+    addProduct(data);
+});
