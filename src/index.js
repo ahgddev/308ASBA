@@ -9,7 +9,6 @@ defaultProducts()
 
 //Search bar submission handling
 submitBtn.addEventListener("click", function(event){
-    debugger
     let searchBarData = searchBar.value
     searchForFood(String(searchBarData));
 });

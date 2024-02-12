@@ -27,6 +27,7 @@ async function getFoodNutrition(barcode) {
   //Try to get the food nutrition and other information from the API, return it.
   let foodBarCode = barcode;
   try {
+    debugger
     let foodDataSearch = await axios({
       url: foodBarCode,
       method: "get",
@@ -35,6 +36,7 @@ async function getFoodNutrition(barcode) {
     let foodData = foodDataSearch.data.products.find(
       (item) => item._id === foodBarCode
     );
+
     let foodInfoArr = {
       name: foodData.product_name,
       description: Object.values(foodData.category_properties)[0],
