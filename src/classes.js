@@ -8,6 +8,7 @@ async function createProducts(barcode) {
   let foodIMGURL = await getFoodIMG(barcode);
   let foodData = await getFoodNutrition(barcode);
 
+//   processData(foodData)
   let fragment = new DocumentFragment();
   let img = document.createElement("img");
   img.src = foodIMGURL;
@@ -26,6 +27,18 @@ async function createProducts(barcode) {
   fragment.appendChild(dataHolder);
   ourProductsSection.append(fragment);
 }
+
+// function processData(foodObj){
+//     console.log(foodObj)
+//     for (item in foodObj){
+//         if(item.value == "")
+//         {
+//             item = "None"
+//         } else if (item.value == "undefined"){
+//             item = "Unknown"
+//         }
+//     }
+// }
 
 createProducts("3274080005003");
 createProducts("7622210449283");

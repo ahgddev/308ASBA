@@ -15,7 +15,6 @@ async function getFoodIMG(barcode) {
       method: "get",
       baseURL: "https://world.openfoodfacts.org/api/v2/search/",
     });
-    console.log(foodReq.data.products)
     return foodReq.data.products.find((item) => item._id === foodBarCode)
       .image_nutrition_small_url;
   } catch (error) {
@@ -38,13 +37,13 @@ async function getFoodNutrition(barcode) {
       (item) => item._id === foodBarCode
     );
     let foodInfoArr = {
-      name: foodData.abbreviated_product_name,
+      name: foodData.product_name,
       description: foodData.category_properties,
       allergens: foodData.allergens,
       categories: foodData.categories_hierarchy,
       nutrition_levels: foodData.nutrient_levels,
-      company_name: foodData.customer_service,
-      ingredients_list: foodData.ingredients_text_en_ocr_1642445989,
+      company_name: foodData.brands_tags,
+      ingredients_list: foodData.ingredients_text,
     };
     return foodInfoArr;
   } catch (error) {
