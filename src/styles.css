@@ -1,0 +1,100 @@
+body {
+  background-color: rgb(236, 236, 236);
+}
+
+main {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+#search_div {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding-bottom: 2%;
+    border-bottom: 2px solid green;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    text-align: center;
+}
+
+#search_div p {
+    margin-right: auto;
+}
+
+#search_div button, #search_bar, #reset_button {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-right: 2px;
+    border: 2px solid green;
+    background-color: rgb(115, 148, 106);
+    border-radius: 5px;
+}
+
+
+#productAddition {
+  position: absolute;
+  top: -400px;
+  left: 35%;
+  width: 30%;
+  height: 40%;
+  border: 2px solid green;
+  background-color: rgb(115, 148, 106);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+#productAddition input {
+  margin-top: 2%;
+  width: 70%;
+  border-radius: 5px;
+  background-color: blanchedalmond;
+}
+
+#productAddition button {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  border: 2px solid green;
+  background-color: rgb(115, 148, 106);
+  border-radius: 5px;
+}
+
+#productButton {
+    width: 10%;
+    margin: auto;
+}
+
+.side_slide_out {
+  transition: top 0.5s ease-out;
+}
+
+.side_slide_in {
+  transition: top 0.5s ease-in;
+}
+
+/* Product Containers */
+
+#ourProducts {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.productInfo {
+    width: 24%;
+    background-color: aliceblue;
+    border-left: 1px solid green;
+}
+
+.productInfoRow {
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 1%;
+}
+
+.productInfoRow p {
+    width: 50%;
+    word-wrap: break-word;
+}

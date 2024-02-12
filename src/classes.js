@@ -14,11 +14,13 @@ async function createProducts(barcode) {
   img.src = foodIMGURL;
 
   let dataHolder = document.createElement("div");
+  dataHolder.classList.add("productInfo");
   dataHolder.append(img);
   for (let [key, value] of Object.entries(foodData)) {
     let keyName = document.createElement("p");
     let valueData = document.createElement("p");
     let divRow = document.createElement("div");
+    divRow.classList.add("productInfoRow")
     keyName.innerHTML = key;
     if (value == undefined) {
       valueData.innerHTML = "No description";

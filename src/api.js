@@ -1,4 +1,4 @@
-export {getFoodIMG, getFoodNutrition, addProduct};
+export { getFoodIMG, getFoodNutrition, addProduct };
 //For getting stuff from the OpenFoodFacts API
 
 async function getFoodIMG(barcode) {
@@ -41,7 +41,6 @@ async function getFoodNutrition(barcode) {
       description: Object.values(foodData.category_properties)[0],
       allergens: foodData.allergens,
       categories: foodData.categories_hierarchy,
-      nutrition_levels: foodData.nutrient_levels,
       company_name: foodData.brands_tags,
       ingredients_list: foodData.ingredients_text,
     };
@@ -55,27 +54,21 @@ async function getFoodNutrition(barcode) {
 
 function addProduct(arr) {
   try {
-    axios.post(
-      "https://world.openfoodfacts.org/cgi/product_jqm2.pl",
-      null,
-      {
+    axios
+      .post("https://world.openfoodfacts.org/cgi/product_jqm2.pl", null, {
         params: {
-            code: arr[0],
-            user_id:  arr[1],
-            comment: arr[2],
-            brands: arr[3],
-            labels: arr[4],
-            categories: arr[5],
-            packaging: arr[6]
+          code: arr[0],
+          user_id: arr[1],
+          comment: arr[2],
+          brands: arr[3],
+          labels: arr[4],
+          categories: arr[5],
+          packaging: arr[6],
         },
-      }
-    ).then(
-      alert("Form submitted sucessfully")
-    )
+      })
+      .then(alert("Form submitted sucessfully"));
   } catch (error) {
     console.log(error + " Couldn't submit food!");
     return error;
   }
 }
-
-
