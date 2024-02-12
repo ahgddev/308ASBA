@@ -38,7 +38,7 @@ async function getFoodNutrition(barcode) {
     );
     let foodInfoArr = {
       name: foodData.product_name,
-      description: foodData.category_properties,
+      description: Object.values(foodData.category_properties)[0],
       allergens: foodData.allergens,
       categories: foodData.categories_hierarchy,
       nutrition_levels: foodData.nutrient_levels,
