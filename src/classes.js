@@ -27,10 +27,10 @@ async function createProducts(barcode) {
   ourProductsSection.append(fragment);
 }
 
-createProducts("3017620422003");
-createProducts("7613035648463");
-createProducts("20002268");
-createProducts("5018374285577");
+createProducts("3274080005003");
+createProducts("7622210449283");
+createProducts("3017620425035");
+createProducts("3175680011480");
 
 // let foodimg = document.createElement("img");
 //     foodimg.src = foodReq.data.products.find(
