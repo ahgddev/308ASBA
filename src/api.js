@@ -2,14 +2,13 @@ export {getFoodIMG, getFoodNutrition, addProduct};
 //For getting stuff from the OpenFoodFacts API
 
 async function getFoodIMG(barcode) {
-  let foodBarCode = String(barcode);
+  let foodBarCode = barcode;
   if (foodBarCode.match(/\w\s+/g)) {
     throw new Error("Invalid food barcode.");
   }
 
   //Try to get the requested food image.
   try {
-
     let foodReq = await axios({
       url: foodBarCode,
       method: "get",
@@ -26,7 +25,7 @@ async function getFoodIMG(barcode) {
 
 async function getFoodNutrition(barcode) {
   //Try to get the food nutrition and other information from the API, return it.
-  let foodBarCode = String(barcode);
+  let foodBarCode = barcode;
   try {
     let foodDataSearch = await axios({
       url: foodBarCode,

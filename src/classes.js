@@ -1,6 +1,6 @@
 //For the Javascript classes creating content on the webpage.
 import { getFoodIMG, getFoodNutrition } from "/src/api.js";
-export { createProducts, clearProducts, defaultProducts};
+export { createProducts, clearProducts, defaultProducts };
 
 //Base Food Shell
 let ourProductsSection = document.getElementById("ourProducts");
@@ -20,15 +20,14 @@ async function createProducts(barcode) {
     let valueData = document.createElement("p");
     let divRow = document.createElement("div");
     keyName.innerHTML = key;
-    if(value == undefined){
-        valueData.innerHTML = "No description"
-    } else if (value == null || value == ""){
-        valueData.innerHTML = "None"
-    } 
-    else {
-        valueData.innerHTML = value;
+    if (value == undefined) {
+      valueData.innerHTML = "No description";
+    } else if (value == null || value == "") {
+      valueData.innerHTML = "None";
+    } else {
+      valueData.innerHTML = value;
     }
-    divRow.append(keyName, valueData)
+    divRow.append(keyName, valueData);
     dataHolder.appendChild(divRow);
   }
   fragment.appendChild(dataHolder);
@@ -36,36 +35,14 @@ async function createProducts(barcode) {
 }
 
 //Clear products out of the products section when searched.
-function clearProducts(){
-
+function clearProducts() {
+  ourProductsSection.innerHTML = "";
 }
 
 //Bring back products when search is cleared.
-function defaultProducts(){
-
+function defaultProducts() {
+  createProducts("3274080005003");
+  createProducts("7622210449283");
+  createProducts("3017620425035");
+  createProducts("3175680011480");
 }
-
-//Process values that are objects
-function processValue(foodObj){
-    let arr = [];
-    foodObj.forEach(element => {
-        arr.unshift(element)
-    });
-    return arr
-}
-
-createProducts("3274080005003");
-createProducts("7622210449283");
-createProducts("3017620425035");
-createProducts("3175680011480");
-
-// let foodimg = document.createElement("img");
-//     foodimg.src = foodReq.data.products.find(
-//       (item) => item._id === foodBarCode
-//     ).image_nutrition_small_url;
-//     document.body.append(foodimg);
-
-//For foodimg errors
-// let foodimg = document.createElement("img");
-//     foodimg.src = "images/404img.png";
-//     document.body.append(foodimg);
