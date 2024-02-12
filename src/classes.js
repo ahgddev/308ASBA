@@ -1,35 +1,36 @@
 //For the Javascript classes creating content on the webpage.
-import {getFoodIMG, getFoodNutrition} from "/src/api.js";
+import { getFoodIMG, getFoodNutrition } from "/src/api.js";
 
 //Base Food Shell
-let ourProductsSection = document.getElementById('ourProducts');
+let ourProductsSection = document.getElementById("ourProducts");
 
-async function createProducts(barcode){
-let foodIMGURL = await getFoodIMG(barcode);
-let foodData = await getFoodNutrition(barcode);
+async function createProducts(barcode) {
+  let foodIMGURL = await getFoodIMG(barcode);
+  let foodData = await getFoodNutrition(barcode);
 
-let fragment = new DocumentFragment();
-let img = document.createElement("img");
-img.src = foodIMGURL;
+  let fragment = new DocumentFragment();
+  let img = document.createElement("img");
+  img.src = foodIMGURL;
 
-let dataHolder = document.createElement("div");
-let dTable = document.createElement("table");
-debugger
-for (let [key, value] of Object.entries(foodData)){
+  let dataHolder = document.createElement("div");
+  let dTable = document.createElement("table");
+  for (let [key, value] of Object.entries(foodData)) {
     let keyName = document.createElement("p");
     let valueData = document.createElement("p");
     keyName.innerHTML = `<tr>${key}</tr>`;
-    valueData.innerHTML = `<tr>${value}</tr>`
-    dTable.append(keyName, valueData)
-}
-dataHolder.append(img)
-dataHolder.append(dTable);
-fragment.appendChild(dataHolder);
-ourProductsSection.append(fragment);
+    valueData.innerHTML = `<tr>${value}</tr>`;
+    dTable.append(keyName, valueData);
+  }
+  dataHolder.append(img);
+  dataHolder.append(dTable);
+  fragment.appendChild(dataHolder);
+  ourProductsSection.append(fragment);
 }
 
-createProducts("3017620422003")
-
+createProducts("3017620422003");
+createProducts("7613035648463");
+createProducts("20002268");
+createProducts("5018374285577");
 
 // let foodimg = document.createElement("img");
 //     foodimg.src = foodReq.data.products.find(

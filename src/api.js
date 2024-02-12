@@ -9,11 +9,13 @@ async function getFoodIMG(barcode) {
 
   //Try to get the requested food image.
   try {
+
     let foodReq = await axios({
       url: foodBarCode,
       method: "get",
       baseURL: "https://world.openfoodfacts.org/api/v2/search/",
     });
+    console.log(foodReq.data.products)
     return foodReq.data.products.find((item) => item._id === foodBarCode)
       .image_nutrition_small_url;
   } catch (error) {
