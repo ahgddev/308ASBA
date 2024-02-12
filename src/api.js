@@ -1,4 +1,4 @@
-// export { getFoodIMG, getFoodNutrition, addProduct };
+export {getFoodIMG, getFoodNutrition, addProduct};
 //For getting stuff from the OpenFoodFacts API
 
 async function getFoodIMG(barcode) {
@@ -77,7 +77,3 @@ function addProduct(barcode) {
     return error;
   }
 }
-
-getFoodIMG("3017620422003");
-getFoodNutrition("3017620422003");
-addProduct("007");
